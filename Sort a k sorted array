@@ -1,0 +1,41 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T>0){
+		    int N=sc.nextInt();
+		    int K=sc.nextInt();
+		    int arr[]=new int[N];
+		    ArrayList<Integer> list=new ArrayList<>();
+		    for(int i=0;i<N;i++){
+		        arr[i]=sc.nextInt();
+		    }
+		    PriorityQueue<Integer> min=new PriorityQueue<>();
+            for(int i=0;i<K;i++){
+                min.add(arr[i]);
+            }
+		    for(int i=K;i<N;i++){
+		        list.add(min.peek());
+		        min.remove();
+		        min.add(arr[i]);
+		    }
+		    int size=min.size();
+		    for(int i=0;i<size;i++){
+		        list.add(min.peek());
+		        min.remove();
+		    }
+		    for(int i:list){
+		        System.out.print(i+" ");
+		    }
+		    System.out.println();
+		    
+		    T--;
+		}
+	}
+}
